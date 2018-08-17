@@ -20,14 +20,39 @@
 
 # fib(8)
 
-def triangles(max):
-	n = 0
-	N = [1]
-	while n < max :
-		yield N
-		N = [1] + [N[i] + N[i+1] for i in range(len(N) - 1)] + [1]
-		n +=1
+# def triangles(max):
+# 	n = 0
+# 	N = [1]
+# 	while n < max :
+# 		yield N
+# 		N = [1] + [N[i] + N[i+1] for i in range(len(N) - 1)] + [1]
+# 		n +=1
+# 	print("ojbk")
+
+# for x in triangles(10) :
+# 	print(x)
+
+# def is_odd(n):
+# 	return n % 2 == 1
+
+# L = list(filter(is_odd,range(1,20)))
+# print(L)
+
+# l = list(filter(lambda x : x % 2 ==1 ,range(1,20)))
+# print(l == L)
+
+def log(func):
+	def wrapper(*arg , **kw):
+		print("call me %s():" % func.__name__)
+		return func(*arg , **kw)
+	return wrapper
+
+@log
+def now():
 	print("ojbk")
 
-for x in triangles(10) :
-	print(x)
+now()
+
+
+
+
