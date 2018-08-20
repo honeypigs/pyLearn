@@ -41,18 +41,25 @@
 # l = list(filter(lambda x : x % 2 ==1 ,range(1,20)))
 # print(l == L)
 
-def log(func):
-	def wrapper(*arg , **kw):
-		print("call me %s():" % func.__name__)
-		return func(*arg , **kw)
-	return wrapper
+# def log(func):
+# 	def wrapper(*arg , **kw):
+# 		print("call me %s():" % func.__name__)
+# 		return func(*arg , **kw)
+# 	return wrapper
 
-@log
-def now():
-	print("ojbk")
+# @log
+# def now():
+# 	print("ojbk")
 
-now()
+# now()
 
+import os
 
+print("this process (%s) start " % os.getpid())
+pid = os.fork()
+if pid == 0 :
+	print("i'm child %s and my parent is %s" % (os.getpid() , os.getppid()))
+else :
+	print("i'm father %s and my child is %s" % (os.getpid() , pid))
 
 
